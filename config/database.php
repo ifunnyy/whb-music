@@ -46,8 +46,8 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => preg_split('/:/',getenv('MYSQL_ADDRESS'))[0],
-            'port' => preg_split('/:/',getenv('MYSQL_ADDRESS'))[1],
+            'host' => getenv('MYSQL_ADDRESS'),
+            'port' => getenv('MYSQL_PORT'),
             'database' => (getenv('MYSQL_DATABASE') == null) ? 'laravel_demo' : getenv('MYSQL_DATABASE'),
             'username' => getenv('MYSQL_USERNAME'),
             'password' => getenv('MYSQL_PASSWORD'),
