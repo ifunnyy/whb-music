@@ -19,5 +19,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('hello', function () {
-    return 'Hello World';
+    return [
+        'code' => '1',
+        'result' => true,
+        'message' => 'success',
+        'data' => [
+            'name' => 'John Doe'
+        ]
+    ];
 });
