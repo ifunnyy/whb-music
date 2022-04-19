@@ -1,0 +1,19 @@
+{
+    "containerPort": 80,
+	"minNum": 0,
+	"maxNum": 5,
+	"cpu": 1,
+	"mem": 2,
+	"policyType": "cpu",
+	"policyThreshold": 60,
+	"envParams": {
+        "MYSQL_ADDRESS": "10.0.224.5:3306",
+        "MYSQL_PASSWORD": "Root677412",
+        "MYSQL_USERNAME": "root"
+    },
+	"customLogs": "/app/storage/logs/*",
+	"dataBaseName":"whb-music",
+	"executeSQLs":[
+		"CREATE DATABASE IF NOT EXISTS whb-music;"
+	]
+}
