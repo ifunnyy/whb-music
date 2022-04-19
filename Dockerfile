@@ -22,6 +22,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tencent.com/g' /etc/apk/repositorie
     php7-tokenizer \
     php7-curl \
     nginx \
+    composer \
     && rm -f /var/cache/apk/*
 
 # 设定工作目录
