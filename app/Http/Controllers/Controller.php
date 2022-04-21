@@ -13,6 +13,6 @@ class Controller extends BaseController
 
     protected function success(string $message = '操作成功', $data = [])
     {
-        return response()->json(['result' => true, 'message' => $message, 'code' => '1', 'data' => $data], 200);
+        return response()->json(['result' => true, 'msg' => $message, 'code' => '1', 'data' => $data], 200);
     }
 }
