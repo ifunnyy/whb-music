@@ -63,5 +63,6 @@ class User extends Authenticatable
     protected $casts = [
         'locked' => 'boolean',
         'enabled' => 'boolean',
+        'last_login_at' => 'datetime',
     ];
 }

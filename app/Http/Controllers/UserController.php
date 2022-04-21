@@ -27,7 +27,7 @@ class UserController extends Controller
 
         return $this->success('注册成功', [
             'token' => $token->plainTextToken,
-            'user' => $user->refresh()
+            'user' => (new UserResource($user))
         ]);
     }
 
@@ -39,13 +39,16 @@ class UserController extends Controller
         if (!Hash::check($request->password, $user->password)) {
             abort(401, '密码错误');
         }
+        $user->last_login_ip = $request->ip();
+        $user->last_login_at = now();
+        $user->save();
 
         // 生成 token
         $token = $user->createToken('auth');
 
         return $this->success('登录成功', [
             'token' => $token->plainTextToken,
-            'user' => $user
+            'user' => (new UserResource($user))
         ]);
     }
 
