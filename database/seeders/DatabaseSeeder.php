@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
             ]);
         } else {
             // 创建 admin 用户
-            make(User::class, [
+            User::create([
                 'username' => 'admin',
-                'password' => 'admin_667412'
+                'password' => 'admin_888'
             ]);
         }
     }
