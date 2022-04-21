@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,12 @@ class DatabaseSeeder extends Seeder
             $this->call([
                 UserSeeder::class,
                 RoleSeeder::class
+            ]);
+        } else {
+            // 创建 admin 用户
+            make(User::class, [
+                'username' => 'admin',
+                'password' => 'admin_667412'
             ]);
         }
     }
