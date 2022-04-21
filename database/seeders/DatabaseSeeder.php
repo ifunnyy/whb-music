@@ -14,17 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        if (app()->isLocal()) {
-            $this->call([
-                UserSeeder::class,
-                RoleSeeder::class
-            ]);
-        } else {
-            // 创建 admin 用户
-            User::create([
-                'username' => 'admin',
-                'password' => 'admin_888'
-            ]);
-        }
+        User::create([
+            'username' => 'admin',
+            'password' => 'admin_888'
+        ]);
+
+//        if (app()->isLocal()) {
+//            $this->call([
+//                UserSeeder::class,
+//                RoleSeeder::class
+//            ]);
+//        }
     }
 }
