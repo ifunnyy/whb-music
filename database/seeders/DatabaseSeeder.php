@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         User::create([
             'username' => 'admin',
-            'password' => 'admin_888'
+            'password' => Hash::make('admin_888')
         ]);
 
 //        if (app()->isLocal()) {

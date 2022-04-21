@@ -34,6 +34,8 @@ Route::post('/user/register', [UserController::class, 'register']);
 Route::post('/user/login', [UserController::class, 'login']);
 // 获取用户信息
 Route::get('/user/info', [UserController::class, 'info']);
+// 注销
+Route::get('/user/logout', [UserController::class, 'logout']);
 
 // 找回密码
 Route::post('/user/forget-password', [UserController::class, 'forgetPassword']);

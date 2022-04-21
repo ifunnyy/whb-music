@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:sanctum')->only('info');
+        $this->middleware('auth:sanctum')->only(['info', 'logout']);
     }
 
     public function list() {
@@ -63,5 +63,11 @@ class UserController extends Controller
     public function info()
     {
         return $this->success('获取成功', new UserResource(Auth::user()));
+    }
+
+    public function logout()
+    {
+        Auth::user()->tokens()->delete();
+        return $this->success('退出成功');
     }
 }
