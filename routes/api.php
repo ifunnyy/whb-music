@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('hello', function () {
     return [
         'code' => '1',
@@ -28,3 +25,12 @@ Route::get('hello', function () {
         ]
     ];
 });
+
+Route::get('users', [UserController::class, 'list']);
+
+// 注册
+Route::post('/user/register', [UserController::class, 'register']);
+// 登录
+Route::post('/user/login', [UserController::class, 'login']);
+// 找回密码
+Route::post('/user/forget-password', [UserController::class, 'forgetPassword']);

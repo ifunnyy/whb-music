@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Services\IDServices;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Tuupola\Ksuid;
 
 class User extends Authenticatable
 {
@@ -21,6 +23,8 @@ class User extends Authenticatable
         'username',
         'password',
         'nickname',
+        'last_login_at',
+        'last_login_ip',
     ];
 
     /**
@@ -29,8 +33,27 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password'
+        'password',
+        'remember_token'
     ];
+
+    public function getGenderAttribute($value)
+    {
+        switch ($value) {
+            case 1:
+                return "男";
+            case 2:
+                return "女";
+            default:
+                return "未知";
+        }
+    }
+
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_has_roles', 'user_id', 'role_id');
+    }
 
     /**
      * The attributes that should be cast.
